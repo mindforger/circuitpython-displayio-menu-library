@@ -10,3 +10,5 @@ https://learn.adafruit.com/circuitpython-display-support-using-displayio/helper-
 - adafruit_display_shapes
 - adafruit_display_text
 - adafruit_displayio_layout
+
+tested with up to 64 simple label entries before running out of memory
