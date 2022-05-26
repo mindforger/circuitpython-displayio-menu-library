@@ -72,8 +72,8 @@ class MenuLayout:
             elif no < 0:
                 no = 0
             offset = int(self.display_entries / 2 - 0.5)
-            pos = (self.cell_space*(-no+offset))+1
-            print("no:{} len:{} pos:{} off:{} self:{}".format(no, len(self.menu_entries), pos, offset, self.__dict__))
+            pos = int(self.cell_space*(-no+offset))
+            print("no:{} len:{} pos:{} off:{}".format(no, len(self.menu_entries), pos, offset))
             if self.orientation == self.Orientation.VERTICAL:
                 self.layout.y = pos
             elif self.orientation == self.Orientation.HORIZONTAL:
@@ -110,16 +110,14 @@ class MenuLayout:
             space = display.height / self.display_entries
             h = space * l
             y_off = int(space*self._i_offset/2 - 0.5)
-#            y = int((self.display.height/2)-(space*len(self.menu_entries)/2))
         elif self.orientation == self.Orientation.HORIZONTAL:
             h = self.display.height
             c = len(self.menu_entries)
             space = display.width / self.display_entries
             w = space * c
             x_off = int(space*self._i_offset/2 - 0.5)
-#            x = int((self.display.width/2)-(self.cell_space*len(self.menu_entries)/2))
-        self.cell_space = int(space)
-        print("cs:{} w:{} h:{} c:{}, l:{}".format(self.cell_space,w,h,c,l))
+        self.cell_space = space
+        #print("cs:{} w:{} h:{} c:{}, l:{}".format(self.cell_space,w,h,c,l))
         self.layout = GridLayout(
             x=x_off,
             y=y_off,

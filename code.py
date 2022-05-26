@@ -1,5 +1,6 @@
 from menu import Menu, scan_input, menulayout
 import mydisplay
+from rainbowio import colorwheel
 stopped = False
 
 class MainMenu(Menu):
@@ -32,10 +33,18 @@ class MainMenu(Menu):
     
     def __init__(self, target):
         cells = 3
-        orientation = menulayout.MenuLayout.Orientation.HORIZONTAL
-        super().__init__(target, "main", MainMenu.entries, actions=MainMenu.actions, default_action=self.default_action, orientation=orientation, display_entries=cells)
+        entries = []
+        n=0
+        for i in range(0,256,4):
+            color = colorwheel(i)
+            entries.append(menulayout.MenuEntry(hex(color), color,scale=2),)
+            n += 1
+        orientation = menulayout.MenuLayout.Orientation.VERTICAL
+        super().__init__(target, "main", entries, actions=MainMenu.actions, default_action=self.default_action, orientation=orientation, display_entries=cells)
 
 def run():
+    global now
+    global stopped
     inp = None
     column = 0
     main_menu = MainMenu(mydisplay.display)
@@ -44,5 +53,6 @@ def run():
         inp = scan_input()
         if inp is not None:
             main_menu.update(inp)
+
 
 run()
