@@ -1,5 +1,5 @@
 # circuitpy-displayio-menu-library
-circuitpython based menu building library based on adafruit display helper librarys
+circuitpython menu building library based on adafruit display helper librarys
 
 tested on circuitpython 7.2.5 using waveshare pi pico clone with 0.96 inch display
 
